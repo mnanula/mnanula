@@ -1,0 +1,15 @@
+#  Autoregressive Integrated Moving Average
+#  - Models next step as a linear function of the differenced observations and residual errors at prior time steps
+#  - combines Autoregression and Moving Average models and differences pre-processing step of the sequence to make the sequence stationary
+#  - extra step is called integration to achieve stationarity
+
+from statsmodels.tsa.arima.model import ARIMA
+from random import random
+# contrived dataset
+data = [x + random() for x in range(1, 100)]
+# fit model
+model = ARIMA(data, order=(1, 1, 1))
+model_fit = model.fit()
+# make prediction
+yhat = model_fit.predict(len(data), len(data), typ='levels')
+print(yhat)
