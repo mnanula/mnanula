@@ -1,0 +1,14 @@
+#  Moving Average ARIMA Model:
+#  - Suitable for univariate time series without trend and seasonal components
+#  - Models next step as a linear function of the residual errors from a mean process at prior time steps
+
+from statsmodels.tsa.arima.model import ARIMA
+from random import random
+# contrived dataset
+data = [x + random() for x in range(1, 100)]
+# fit model
+model = ARIMA(data, order=(0, 0, 1))
+model_fit = model.fit()
+# make prediction
+yhat = model_fit.predict(len(data), len(data))
+print(yhat)
