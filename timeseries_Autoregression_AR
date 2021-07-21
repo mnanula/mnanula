@@ -1,3 +1,7 @@
+#  Autoregression Model
+#  - Suitable for univariate time series without trend and seasonal components
+#  - Models the next step in the sequence as a linear function of the observations at prior time steps
+
 from statsmodels.tsa.ar_model import AutoReg
 from random import random
 # contrived dataset
